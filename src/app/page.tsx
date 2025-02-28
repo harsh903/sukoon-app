@@ -9,40 +9,49 @@ export default function Home() {
     <main className="min-h-screen">
       <SignedOut>
         {/* Hero Section */}
-        <section id="home" className="pt-28 pb-16 bg-gradient-to-br from-teal-50 via-sage-50 to-blue-50">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="text-left">
-                <h1 className="text-5xl font-bold text-teal-900 mb-6 leading-tight">
-                  Your Mental Health Journey, 
-                  <span className="bg-gradient-to-r from-teal-500 to-emerald-400 text-transparent bg-clip-text"> Powered by AI</span>
-                </h1>
-                <p className="text-xl text-gray-600 mb-8">
-                  Connect with our AI counselor, join a supportive community, and track your mood - all in one safe space. No judgment, just growth. 🌱✨
-                </p>
-                <div className="flex gap-4">
-                  <SignInButton mode="modal">
-                    <button className="px-8 py-3 border-2 border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50 transition-colors">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                  <SignUpButton mode="modal">
-                    <button className="px-8 py-3 bg-gradient-to-r from-teal-500 to-emerald-400 text-white rounded-lg hover:opacity-90 transition-all flex items-center gap-2">
-                      Get Started <Bot className="h-5 w-5" />
-                    </button>
-                  </SignUpButton>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="w-full h-[400px] bg-gradient-to-br from-teal-200 to-emerald-200 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg text-teal-800">Interactive 3D Counselor Avatar</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+   {/* Hero Section */}
+<section id="home" className="pt-28 pb-16 bg-gradient-to-br from-teal-50 via-sage-50 to-blue-50">
+  <div className="container mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="text-left">
+        <h1 className="text-5xl font-bold text-teal-900 mb-6 leading-tight">
+          Your Mental Health Journey,
+          <span className="bg-gradient-to-r from-teal-500 to-emerald-400 text-transparent bg-clip-text"> Powered by AI</span>
+        </h1>
+        <p className="text-xl text-gray-600 mb-8">
+          Connect with our AI counselor, join a supportive community, and track your mood - all in one safe space. No judgment, just growth. 🌱✨
+        </p>
+        <div className="flex gap-4">
+          <SignInButton mode="modal">
+            <button className="px-8 py-3 border-2 border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50 transition-colors">
+              Sign In
+            </button>
+          </SignInButton>
+          <SignUpButton mode="modal">
+            <button className="px-8 py-3 bg-gradient-to-r from-teal-500 to-emerald-400 text-white rounded-lg hover:opacity-90 transition-all flex items-center gap-2">
+              Get Started <Bot className="h-5 w-5" />
+            </button>
+          </SignUpButton>
+        </div>
+      </div>
+      <div className="relative">
+        <div className="w-full h-[400px] rounded-2xl overflow-hidden bg-white shadow-lg">
+          <Image
+            src="/Assets/panda.gif"
+            alt="Panda AI Counselor"
+            width={400}
+            height={400}
+            className="object-contain w-full h-full"
+            priority
+          />
+        </div>
+        {/* Optional decorative elements */}
+        <div className="absolute -z-10 right-0 top-0 w-72 h-72 bg-teal-200 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute -z-10 left-0 bottom-0 w-72 h-72 bg-emerald-200 rounded-full blur-3xl opacity-20"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Features Section */}
         <section id="features" className="py-20 bg-white">
@@ -515,20 +524,67 @@ export default function Home() {
       </SignedOut>
 
       {/* Signed In Content */}
-      <SignedIn>
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-sage-50 to-blue-50">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-teal-900 mb-6">Welcome to MindfulPath!</h1>
-            <p className="text-xl text-gray-600 mb-8">Your mental wellness journey continues.</p>
-            <Link 
-              href="/dashboard"
-              className="px-8 py-3 bg-gradient-to-r from-teal-500 to-emerald-400 text-white rounded-lg hover:opacity-90 transition-all inline-flex items-center gap-2"
-            >
-              Go to Dashboard <ArrowRight className="h-5 w-5" />
-            </Link>
+      {/* Signed In Content */}
+<SignedIn>
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-sage-50 to-blue-50">
+    <div className="text-center max-w-4xl w-full px-6">
+      <h1 className="text-4xl font-bold text-teal-900 mb-6">Welcome to Sukoon!</h1>
+      <p className="text-xl text-gray-600 mb-12">Choose your companion and let us know how you're feeling today.</p>
+      
+      {/* Avatar Selection */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        {[
+          { name: "Zen", image: "/Assets/panda-meditation.gif" },
+          { name: "Happy", image: "/Assets/panda-happy.gif" },
+          { name: "Wise", image: "/Assets/panda-reading.gif" },
+          { name: "Care", image: "/Assets/panda-heart.gif" }
+        ].map((avatar, index) => (
+          <div 
+            key={index}
+            className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer"
+          >
+            <img
+              src={avatar.image}
+              alt={`${avatar.name} Panda`}
+              className="w-24 h-24 mx-auto mb-3 object-contain"
+            />
+            <p className="font-medium text-teal-900">{avatar.name} Panda</p>
           </div>
+        ))}
+      </div>
+
+      {/* Mood Selection */}
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold text-teal-900 mb-6">How are you feeling today?</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          {[
+            { mood: "Happy", emoji: "😊" },
+            { mood: "Calm", emoji: "😌" },
+            { mood: "Anxious", emoji: "😰" },
+            { mood: "Tired", emoji: "😴" },
+            { mood: "Excited", emoji: "🤗" }
+          ].map((mood, index) => (
+            <div 
+              key={index}
+              className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer"
+            >
+              <div className="text-2xl mb-2">{mood.emoji}</div>
+              <div className="text-sm text-teal-900">{mood.mood}</div>
+            </div>
+          ))}
         </div>
-      </SignedIn>
+      </div>
+
+      {/* Dashboard Link */}
+      <Link
+        href="/dashboard"
+        className="px-8 py-3 bg-gradient-to-r from-teal-500 to-emerald-400 text-white rounded-lg hover:opacity-90 transition-all inline-flex items-center gap-2"
+      >
+        Go to Dashboard <ArrowRight className="h-5 w-5" />
+      </Link>
+    </div>
+  </div>
+</SignedIn>
     </main>
   );
 }
